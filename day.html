@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
+
+  <title>เธอเกิดมาแล้วกี่วัน ?</title>
+
+  <!-- FONT -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    body {
+      font-family: "Prompt", sans-serif;
+
+      background:
+        url("bg.png")
+        center center /
+        cover
+        no-repeat;
+
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
+
+      position: relative;
+
+      min-height: 100svh;
+    }
+
+
+    /* =====================================================
+       MAIN CONTAINER
+    ===================================================== */
+
+    .day-container {
+
+      position: relative;
+
+      width: min(435px, 100vw);
+
+      height: 100svh;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+      align-items: center;
+
+      padding:
+        max(75px, env(safe-area-inset-top))
+        20px
+        max(90px, env(safe-area-inset-bottom));
+    }
+
+
+    /* =====================================================
+       TITLE IMAGE
+    ===================================================== */
+
+    .day-title {
+
+      position: absolute;
+
+      top: clamp(15px, 4vh, 30px);
+
+      left: 50%;
+
+      transform:
+        translateX(-50%);
+
+      width:
+        min(
+          330px,
+          calc(100% - 30px)
+        );
+
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
+
+      z-index: 20;
+
+      user-select: none;
+    }
+
+
+    .day-title img {
+
+      display: block;
+
+      width: 100%;
+      height: auto;
+
+      object-fit: contain;
+
+      user-select: none;
+
+      pointer-events: none;
+
+      -webkit-user-drag: none;
+    }
+
+
+    /* =====================================================
+       MAIN CONTENT
+    ===================================================== */
+
+    .day-content {
+
+      width:
+        min(
+          390px,
+          100%
+        );
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+      justify-content: center;
+
+      margin-top: 10px;
+    }
+
+
+    /* =====================================================
+       IMAGE WRAPPER
+    ===================================================== */
+
+    .image-wrap {
+
+      width: 100%;
+
+      height:
+        clamp(
+          250px,
+          43vh,
+          350px
+        );
+
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
+
+      position: relative;
+    }
+
+
+    /* =====================================================
+       HEART IMAGE
+    ===================================================== */
+
+    .center-img {
+
+      display: block;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: contain;
+
+      user-select: none;
+
+      pointer-events: none;
+
+      filter:
+        drop-shadow(
+          0 10px 18px
+          rgba(0, 0, 0, 0.10)
+        );
+
+      animation:
+        heartbeat
+        2.5s
+        ease-in-out
+        infinite;
+    }
+
+
+    /* =====================================================
+       HEARTBEAT
+    ===================================================== */
+
+    @keyframes heartbeat {
+
+      0%,
+      100% {
+
+        transform:
+          scale(1);
+      }
+
+      50% {
+
+        transform:
+          scale(1.025);
+      }
+
+    }
+
+
+    /* =====================================================
+       TIME GRID
+    ===================================================== */
+
+    .time-grid {
+
+      width: 100%;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          4,
+          minmax(0, 1fr)
+        );
+
+      gap:
+        clamp(
+          5px,
+          2vw,
+          9px
+        );
+
+      margin-top: 8px;
+    }
+
+
+    /* =====================================================
+       TIME BOX
+    ===================================================== */
+
+    .time-box {
+
+      min-width: 0;
+
+      padding:
+        clamp(
+          10px,
+          2vw,
+          14px
+        )
+        4px;
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          0.94
+        );
+
+      border:
+        2px solid
+        rgba(
+          146,
+          198,
+          230,
+          0.75
+        );
+
+      border-radius:
+        clamp(
+          13px,
+          3vw,
+          17px
+        );
+
+      text-align: center;
+
+      box-shadow:
+        0 5px 15px
+        rgba(
+          0,
+          0,
+          0,
+          0.05
+        );
+
+      overflow: hidden;
+    }
+
+
+    /* =====================================================
+       TIME VALUE
+    ===================================================== */
+
+    .time-value {
+
+      color: #8c5d44;
+
+      font-size:
+        clamp(
+          16px,
+          5.5vw,
+          24px
+        );
+
+      font-weight: 600;
+
+      line-height: 1.2;
+
+      white-space: nowrap;
+
+      overflow: hidden;
+    }
+
+
+    /* =====================================================
+       TIME LABEL
+    ===================================================== */
+
+    .time-label {
+
+      margin-top: 5px;
+
+      color: #999;
+
+      font-size:
+        clamp(
+          8px,
+          2.5vw,
+          11px
+        );
+
+      line-height: 1.2;
+
+      white-space: nowrap;
+    }
+
+
+    /* =====================================================
+       NAVIGATION
+       ปุ่มอยู่สูงขึ้น
+    ===================================================== */
+
+    .navigation {
+
+      position: fixed;
+
+      left: 50%;
+
+      bottom: 50px;
+
+      transform:
+        translateX(-50%);
+
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
+
+      gap:
+        clamp(
+          6px,
+          2vw,
+          12px
+        );
+
+      width: max-content;
+
+      max-width:
+        calc(
+          100vw - 20px
+        );
+
+      z-index: 40;
+    }
+
+
+    /* =====================================================
+       IMAGE NAV BUTTON
+    ===================================================== */
+
+    .nav-btn {
+
+      display: block;
+
+      width: 145px;
+
+      height: auto;
+
+      padding: 0;
+
+      margin: 0;
+
+      border: none;
+
+      border-radius: 0;
+
+      background: none;
+
+      box-shadow: none;
+
+      cursor: pointer;
+
+      text-decoration: none;
+
+      line-height: 0;
+
+      user-select: none;
+
+      -webkit-user-drag: none;
+
+      transition:
+        transform .2s ease;
+    }
+
+
+    .nav-btn img {
+
+      display: block;
+
+      width: 100%;
+
+      height: auto;
+
+      border: none;
+
+      user-select: none;
+
+      pointer-events: none;
+
+      -webkit-user-drag: none;
+    }
+
+
+    .nav-btn:hover {
+
+      transform:
+        translateY(-2px)
+        scale(1.03);
+    }
+
+
+    .nav-btn:active {
+
+      transform:
+        scale(.95);
+    }
+
+
+    /* =====================================================
+       MOBILE
+    ===================================================== */
+
+    @media (max-width: 500px) {
+
+      .day-container {
+
+        width: 100vw;
+
+        height: 100vh;
+
+        padding:
+          70px 15px
+          85px;
+      }
+
+
+      .day-title {
+
+        top: 18px;
+
+        width:
+          min(
+          280px,
+            calc(100% - 25px)
+          );
+      }
+
+
+      .day-content {
+
+        width:
+          min(
+            90vw,
+            390px
+          );
+
+        margin-top: 5px;
+      }
+
+
+      .image-wrap {
+
+        width: 100%;
+
+        height:
+          min(
+            42vh,
+            330px
+          );
+      }
+
+
+      .time-grid {
+
+        width: 100%;
+
+        gap: 7px;
+
+        margin-top: 7px;
+      }
+
+
+      .time-box {
+
+        padding:
+          12px 3px;
+
+        border-radius: 15px;
+      }
+
+
+      .time-value {
+
+        font-size: 19px;
+      }
+
+
+      .time-label {
+
+        font-size: 9px;
+
+        margin-top: 5px;
+      }
+
+
+      /* ปุ่มสูงขึ้น */
+
+      .navigation {
+
+        gap: 8px;
+
+        bottom: 50px;
+      }
+
+
+      .nav-btn {
+
+        width:
+          calc(
+            (100vw - 35px) / 2
+          );
+
+        max-width: 145px;
+
+        padding: 0;
+      }
+
+    }
+
+
+    /* =====================================================
+       SMALL MOBILE
+    ===================================================== */
+
+    @media (max-width: 380px) {
+
+      .day-container {
+
+        padding:
+          60px 10px
+          78px;
+      }
+
+
+      .day-title {
+
+        top: 12px;
+
+        width:
+          min(
+            285px,
+            calc(100% - 20px)
+          );
+      }
+
+
+      .day-content {
+
+        width: 94vw;
+      }
+
+
+      .image-wrap {
+
+        height:
+          min(
+            38vh,
+            285px
+          );
+      }
+
+
+      .time-grid {
+
+        gap: 5px;
+      }
+
+
+      .time-box {
+
+        padding:
+          10px 2px;
+
+        border-radius: 13px;
+      }
+
+
+      .time-value {
+
+        font-size: 16px;
+      }
+
+
+      .time-label {
+
+        font-size: 8px;
+
+        margin-top: 4px;
+      }
+
+
+      .navigation {
+
+        gap: 6px;
+
+        bottom: 50px;
+      }
+
+
+      .nav-btn {
+
+        width:
+          calc(
+            (100vw - 28px) / 2
+          );
+
+        max-width: 135px;
+
+        padding: 0;
+      }
+
+    }
+/* ปรับ text1.png โดยตรง */
+.day-title {
+  top: 8px !important;
+  width: 360px !important;
+  max-width: calc(100% - 20px) !important;
+}
+
+.day-title img {
+  width: 100% !important;
+  height: auto !important;
+}
+
+    /* =====================================================
+       VERY SMALL SCREEN
+    ===================================================== */
+
+    @media (max-width: 340px) {
+
+      .day-title {
+
+        width:
+          min(
+            260px,
+            calc(100% - 15px)
+          );
+      }
+
+
+      .image-wrap {
+
+        height: 245px;
+      }
+
+
+      .time-box {
+
+        padding:
+          9px 1px;
+      }
+
+
+      .time-value {
+
+        font-size: 14px;
+      }
+
+
+      .time-label {
+
+        font-size: 7px;
+      }
+
+
+      .navigation {
+
+        bottom: 50px;
+      }
+
+
+      .nav-btn {
+
+        width: 128px;
+
+        padding: 0;
+      }
+
+    }
+
+
+    /* =====================================================
+       SHORT SCREEN
+    ===================================================== */
+
+    @media (max-height: 700px) {
+
+      .day-container {
+
+        padding:
+          60px 15px
+          75px;
+      }
+
+
+      .day-title {
+
+        top: 10px;
+      }
+
+
+      .day-content {
+
+        margin-top: 0;
+      }
+
+
+      .image-wrap {
+
+        height:
+          min(
+            38vh,
+            280px
+          );
+      }
+
+
+      .time-grid {
+
+        margin-top: 5px;
+      }
+
+
+      .time-box {
+
+        padding:
+          9px 3px;
+      }
+
+
+      /* ปุ่มสูงขึ้น */
+
+      .navigation {
+
+        bottom: 50px;
+      }
+
+    }
+
+
+    /* =====================================================
+       VERY SHORT SCREEN
+    ===================================================== */
+
+    @media (max-height: 600px) {
+
+      .day-container {
+
+        padding:
+          45px 10px
+          65px;
+      }
+
+
+      .day-title {
+
+        top: 4px;
+
+        width:
+          min(
+            260px,
+            calc(100% - 20px)
+          );
+      }
+
+
+      .image-wrap {
+
+        height: 220px;
+      }
+
+
+      .time-grid {
+
+        gap: 4px;
+      }
+
+
+      .time-box {
+
+        padding:
+          7px 2px;
+
+        border-radius: 11px;
+      }
+
+
+      .time-value {
+
+        font-size: 14px;
+      }
+
+
+      .time-label {
+
+        font-size: 7px;
+
+        margin-top: 3px;
+      }
+
+
+      .navigation {
+
+        bottom: 50px;
+
+        gap: 5px;
+      }
+
+
+      .nav-btn {
+
+        width: 128px;
+
+        padding: 0;
+      }
+
+    }
+
+
+    /* =====================================================
+       TABLET / iPAD PORTRAIT
+    ===================================================== */
+
+    @media
+      (min-width: 501px)
+      and (max-width: 900px) {
+
+      .day-container {
+
+        width:
+          min(
+            435px,
+            88vw
+          );
+
+        height:
+          min(
+            700px,
+            94vh
+          );
+      }
+
+
+      .day-title {
+
+        width:
+          min(
+            330px,
+            75vw
+          );
+      }
+
+
+      .day-content {
+
+        width:
+          min(
+            390px,
+            82vw
+          );
+      }
+
+
+      .image-wrap {
+
+        height:
+          min(
+            350px,
+            43vh
+          );
+      }
+
+
+      .navigation {
+
+        bottom: 50px;
+      }
+
+
+      .nav-btn {
+
+        width: 150px;
+      }
+
+    }
+
+
+    /* =====================================================
+       TABLET / iPAD LANDSCAPE
+    ===================================================== */
+
+    @media
+      (min-width: 700px)
+      and (max-height: 600px) {
+
+      .day-container {
+
+        width: 435px;
+
+        height: 100vh;
+
+        padding:
+          45px 15px
+          65px;
+      }
+
+
+      .day-title {
+
+        top: 5px;
+
+        width: 270px;
+      }
+
+
+      .day-content {
+
+        width: 360px;
+      }
+
+
+      .image-wrap {
+
+        height: 215px;
+      }
+
+
+      .time-grid {
+
+        margin-top: 4px;
+      }
+
+
+      .time-box {
+
+        padding:
+          8px 3px;
+      }
+
+
+      .time-value {
+
+        font-size: 17px;
+      }
+
+
+      .time-label {
+
+        font-size: 8px;
+      }
+
+
+      .navigation {
+
+        bottom: 50px;
+      }
+
+
+      .nav-btn {
+
+        width: 145px;
+      }
+
+    }
+
+
+    /* =====================================================
+       LARGE DESKTOP
+    ===================================================== */
+
+    @media (min-width: 1200px) {
+
+      .day-container {
+
+        width: 435px;
+
+        height: 700px;
+      }
+
+
+      .day-title {
+
+        width: 330px;
+      }
+
+
+      .day-content {
+
+        width: 390px;
+      }
+
+
+      .image-wrap {
+
+        height: 350px;
+      }
+
+
+      .nav-btn {
+
+        width: 150px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <main class="day-container">
+
+
+    <!-- TITLE -->
+
+    <div class="day-title">
+
+      <img
+        src="text1.png"
+        alt=""
+        draggable="false"
+      >
+
+    </div>
+
+
+    <!-- CONTENT -->
+
+    <div class="day-content">
+
+
+      <div class="image-wrap">
+
+        <img
+          src="heart.png"
+          class="center-img"
+          alt="Birthday Heart"
+          draggable="false"
+        >
+
+      </div>
+
+
+      <!-- TIME -->
+
+      <div class="time-grid">
+
+
+        <div class="time-box">
+
+          <div
+            class="time-value"
+            id="days"
+          >
+            0
+          </div>
+
+          <div class="time-label">
+            Days
+          </div>
+
+        </div>
+
+
+        <div class="time-box">
+
+          <div
+            class="time-value"
+            id="hours"
+          >
+            00
+          </div>
+
+          <div class="time-label">
+            Hours
+          </div>
+
+        </div>
+
+
+        <div class="time-box">
+
+          <div
+            class="time-value"
+            id="minutes"
+          >
+            00
+          </div>
+
+          <div class="time-label">
+            Minutes
+          </div>
+
+        </div>
+
+
+        <div class="time-box">
+
+          <div
+            class="time-value"
+            id="seconds"
+          >
+            00
+          </div>
+
+          <div class="time-label">
+            Seconds
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </main>
+
+
+  <!-- NAVIGATION -->
+
+  <div class="navigation">
+
+
+    <a
+      class="nav-btn"
+      href="letter.html"
+      aria-label="ย้อนกลับ"
+    >
+
+      <img
+        src="back.png"
+        alt="ย้อนกลับ"
+        draggable="false"
+      >
+
+    </a>
+
+
+    <a
+      class="nav-btn"
+      href="song.html"
+      aria-label="ถัดไป"
+    >
+
+      <img
+        src="next.png"
+        alt="ถัดไป"
+        draggable="false"
+      >
+
+    </a>
+
+
+  </div>
+
+
+  <!-- เวลาเกิด -->
+
+  <script>
+
+    const birthDate =
+      new Date(
+        "2002-09-14T00:00:00"
+      );
+
+
+    function updateTime() {
+
+      const now =
+        new Date();
+
+      let diff =
+        Math.floor(
+          (now - birthDate) / 1000
+        );
+
+
+      const days =
+        Math.floor(
+          diff / 86400
+        );
+
+      diff %= 86400;
+
+
+      const hours =
+        Math.floor(
+          diff / 3600
+        );
+
+      diff %= 3600;
+
+
+      const minutes =
+        Math.floor(
+          diff / 60
+        );
+
+
+      const seconds =
+        diff % 60;
+
+
+      document.getElementById(
+        "days"
+      ).textContent =
+        days.toLocaleString();
+
+
+      document.getElementById(
+        "hours"
+      ).textContent =
+        String(hours)
+          .padStart(2, "0");
+
+
+      document.getElementById(
+        "minutes"
+      ).textContent =
+        String(minutes)
+          .padStart(2, "0");
+
+
+      document.getElementById(
+        "seconds"
+      ).textContent =
+        String(seconds)
+          .padStart(2, "0");
+
+    }
+
+
+    updateTime();
+
+
+    setInterval(
+      updateTime,
+      1000
+    );
+
+  </script>
+
+
+</body>
+
+</html>
