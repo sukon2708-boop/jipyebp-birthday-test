@@ -9,14 +9,16 @@ document.getElementById("closeModalBtn").addEventListener("click", ()=> modalBac
 modalBackdrop.addEventListener("click", (e)=>{ if(e.target===modalBackdrop) modalBackdrop.style.display="none"; });
 
 // ✅ แก้ของรางวัลได้ตรงนี้
+
 const items = [
-  "เติมให้ 500เพชร ",
-  "เติมให้300เพชร",
-  "เติมให้ 1000 เพชร",
-  "เลี้ยงข้าว ",
+  "กอดกัน 1 นาที",
   "จุ๊บ 10 ที",
-  "ทำตามที่เธอบอก 1 อย่าง (อะไรก็ได้)"
+  "ตามใจเธอ 1 วัน",
+  "ขอได้ 1 อย่าง",
+  "พาไปเดต 1 ครั้ง",
+  "บอกรักกัน 10 ครั้ง"
 ];
+
 
 let angle = 0;
 let spinning = false;
