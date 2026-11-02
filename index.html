@@ -1,71 +1,2167 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="th">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Happy Anniversary</title>
 
-  <!-- main style -->
-  <link rel="stylesheet" href="css/style.css" />
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<title>Happy Birthday</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap"
+  rel="stylesheet"
+>
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+*{
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
+html,
+body{
+  width:100%;
+  height:100%;
+  margin:0;
+  padding:0;
+  font-family:"Prompt",sans-serif;
+}
+
+
+/* =====================================================
+   BODY
+===================================================== */
+
+body{
+
+  position:relative;
+
+  width:100%;
+  min-height:100svh;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+  overflow:hidden;
+
+  background:url("bg.png");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+
+}
+
+
+/* =====================================================
+   MAIN AREA
+===================================================== */
+
+body::before{
+
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  pointer-events:none;
+
+}
+
+
+/* =====================================================
+   HAPPY BIRTHDAY
+===================================================== */
+
+.happy{
+
+  position:absolute;
+
+  top:clamp(30px, 9vh, 90px);
+
+  left:50%;
+
+  transform:
+    translateX(-50%)
+    translateY(-30px)
+    scale(.8);
+
+  z-index:20;
+
+  display:none;
+
+  width:100%;
+
+  padding:7px 20px;
+
+  color:#8c5d44;
+
+  font-family:"Prompt",sans-serif;
+
+  font-size:clamp(18px, 2.2vw, 25px);
+
+  font-weight:600;
+
+  letter-spacing:.5px;
+
+  text-align:center;
+
+  animation:
+    happyPop 1s cubic-bezier(.22,1.2,.36,1) forwards;
+
+}
+
+
+/* =====================================================
+   HAPPY BIRTHDAY IMAGE
+===================================================== */
+
+.happy img{
+
+  display:block;
+
+  width:300px;
+
+  max-width:90vw;
+
+  height:auto;
+
+  margin:0 auto;
+
+  user-select:none;
+
+  pointer-events:none;
+
+  -webkit-user-drag:none;
+
+}
+
+
+@keyframes happyPop{
+
+  0%{
+
+    opacity:0;
+
+    transform:
+      translateX(-50%)
+      translateY(-30px)
+      scale(.8);
+
+    filter:blur(3px);
+
+  }
+
+  60%{
+
+    opacity:1;
+
+    transform:
+      translateX(-50%)
+      translateY(5px)
+      scale(1.08);
+
+    filter:blur(0);
+
+  }
+
+  100%{
+
+    opacity:1;
+
+    transform:
+      translateX(-50%)
+      translateY(0)
+      scale(1);
+
+  }
+
+}
+
+
+/* =====================================================
+   CAKE
+===================================================== */
+
+.cake{
+
+  position:absolute;
+
+  width:250px;
+  height:200px;
+
+  top:50%;
+  left:50%;
+
+  margin-top:-70px;
+  margin-left:-125px;
+
+  z-index:10;
+
+  cursor:pointer;
+
+  filter:
+    drop-shadow(
+      0 18px 18px rgba(0,0,0,.25)
+    );
+
+}
+
+
+/* =====================================================
+   CAKE CHILD
+===================================================== */
+
+.cake > *{
+  position:absolute;
+}
+
+
+/* =====================================================
+   PLATE
+===================================================== */
+
+.plate{
+
+  width:270px;
+  height:110px;
+
+  position:absolute;
+
+  bottom:-10px;
+  left:-10px;
+
+  background:#ccc;
+
+  border-radius:50%;
+
+  box-shadow:
+    0 2px 0 #aaa,
+    0 4px 0 #aaa,
+    0 5px 40px rgba(0,0,0,.5);
+
+}
+
+
+/* =====================================================
+   CAKE LAYERS
+===================================================== */
+
+.layer{
+
+  position:absolute;
+
+  display:block;
+
+  width:250px;
+  height:100px;
+
+  border-radius:50%;
+
+  background:#553c13;
+
+  box-shadow:
+
+    0 2px 0 #604618,
+    0 4px 0 #4e370f,
+    0 6px 0 #4e370f,
+    0 8px 0 #4d360f,
+    0 10px 0 #4d360f,
+    0 12px 0 #4c350e,
+    0 14px 0 #4c350e,
+    0 16px 0 #4b340e,
+    0 18px 0 #4b340e,
+    0 20px 0 #4a330d,
+    0 22px 0 #4a330d,
+    0 24px 0 #49320d,
+    0 26px 0 #49320d,
+    0 28px 0 #48310c,
+    0 30px 0 #48310c;
+
+}
+
+
+.layer-top{
+  top:0;
+}
+
+
+.layer-middle{
+  top:33px;
+}
+
+
+.layer-bottom{
+  top:66px;
+}
+
+
+/* =====================================================
+   ICING
+===================================================== */
+
+.icing{
+
+  top:2px;
+  left:5px;
+
+  background:#f0e4d0;
+
+  width:240px;
+  height:90px;
+
+  border-radius:50%;
+
+  z-index:4;
+
+}
+
+
+.icing:before{
+
+  content:"";
+
+  position:absolute;
+
+  top:4px;
+  right:5px;
+  bottom:6px;
+  left:5px;
+
+  background:#f5e9d7;
+
+  box-shadow:
+    0 0 4px #f9efe1,
+    0 0 4px #f9efe1,
+    0 0 4px #f9efe1;
+
+  border-radius:50%;
+
+  z-index:1;
+
+}
+
+
+/* =====================================================
+   DRIPS
+===================================================== */
+
+.drip{
+
+  display:block;
+
+  width:50px;
+  height:60px;
+
+  border-bottom-left-radius:25px;
+  border-bottom-right-radius:25px;
+
+  background:#f0e4d0;
+
+  z-index:5;
+
+}
+
+
+.drip1{
+
+  top:53px;
+  left:5px;
+
+  transform:skewY(15deg);
+
+  height:48px;
+  width:40px;
+
+}
+
+
+.drip2{
+
+  top:69px;
+  left:181px;
+
+  transform:skewY(-15deg);
+
+}
+
+
+.drip3{
+
+  top:54px;
+  left:90px;
+
+  width:80px;
+
+  border-bottom-left-radius:40px;
+  border-bottom-right-radius:40px;
+
+}
+
+
+/* =====================================================
+   CANDLES
+===================================================== */
+
+.candle{
+
+  position:absolute;
+
+  background:#7B020B;
+
+  width:16px;
+  height:50px;
+
+  border-radius:8px / 4px;
+
+  transform:
+    translate(-50%,-100%);
+
+  z-index:10;
+
+  box-shadow:
+    inset 3px 0 4px rgba(255,255,255,.35),
+    inset -3px 0 4px rgba(0,0,0,.08);
+
+}
+
+
+.candle:before{
+
+  content:"";
+
+  position:absolute;
+
+  top:0;
+  left:0;
+
+  width:16px;
+  height:8px;
+
+  border-radius:50%;
+
+  background:#9b1019;
+
+}
+
+
+/* =====================================================
+   CANDLE COLORS
+===================================================== */
+
+.candle-blue{
+
+  background:
+    repeating-linear-gradient(
+      -20deg,
+      #42b8df 0px,
+      #42b8df 6px,
+      #239bc8 7px,
+      #239bc8 9px
+    );
+
+}
+
+
+.candle-yellow{
+
+  background:
+    repeating-linear-gradient(
+      -20deg,
+      #ffd34e 0px,
+      #ffd34e 6px,
+      #f3ad16 7px,
+      #f3ad16 9px
+    );
+
+}
+
+
+.candle-pink{
+
+  background:
+    repeating-linear-gradient(
+      -20deg,
+      #ff9fc2 0px,
+      #ff9fc2 6px,
+      #ef719c 7px,
+      #ef719c 9px
+    );
+
+}
+
+
+.candle-purple{
+
+  background:
+    repeating-linear-gradient(
+      -20deg,
+      #b993ed 0px,
+      #b993ed 6px,
+      #8c62ce 7px,
+      #8c62ce 9px
+    );
+
+}
+
+
+.candle-green{
+
+  background:
+    repeating-linear-gradient(
+      -20deg,
+      #72d7b1 0px,
+      #72d7b1 6px,
+      #3ab68d 7px,
+      #3ab68d 9px
+    );
+
+}
+
+
+/* =====================================================
+   FLAME
+===================================================== */
+
+.flame{
+
+  position:absolute;
+
+  background:orange;
+
+  width:15px;
+  height:35px;
+
+  border-radius:
+    10px 10px 10px 10px /
+    25px 25px 10px 10px;
+
+  top:-34px;
+  left:50%;
+
+  margin-left:-7.5px;
+
+  z-index:10;
+
+  box-shadow:
+
+    0 0 10px rgba(255,165,0,.5),
+    0 0 20px rgba(255,165,0,.5),
+    0 0 60px rgba(255,165,0,.5),
+    0 0 80px rgba(255,165,0,.5);
+
+  transform-origin:50% 90%;
+
+  animation:
+    flicker 1s ease-in-out alternate infinite;
+
+}
+
+
+@keyframes flicker{
+
+  0%{
+
+    transform:skewX(5deg);
+
+    box-shadow:
+      0 0 10px rgba(255,165,0,.2),
+      0 0 20px rgba(255,165,0,.2),
+      0 0 60px rgba(255,165,0,.2),
+      0 0 80px rgba(255,165,0,.2);
+
+  }
+
+  25%{
+
+    transform:skewX(-5deg);
+
+    box-shadow:
+      0 0 10px rgba(255,165,0,.5),
+      0 0 20px rgba(255,165,0,.5),
+      0 0 60px rgba(255,165,0,.5),
+      0 0 80px rgba(255,165,0,.5);
+
+  }
+
+  50%{
+
+    transform:skewX(10deg);
+
+    box-shadow:
+      0 0 10px rgba(255,165,0,.3),
+      0 0 20px rgba(255,165,0,.3),
+      0 0 60px rgba(255,165,0,.3),
+      0 0 80px rgba(255,165,0,.3);
+
+  }
+
+  75%{
+
+    transform:skewX(-10deg);
+
+    box-shadow:
+      0 0 10px rgba(255,165,0,.4),
+      0 0 20px rgba(255,165,0,.4),
+      0 0 60px rgba(255,165,0,.4),
+      0 0 80px rgba(255,165,0,.4);
+
+  }
+
+  100%{
+
+    transform:skewX(5deg);
+
+    box-shadow:
+      0 0 10px rgba(255,165,0,.5),
+      0 0 20px rgba(255,165,0,.5),
+      0 0 60px rgba(255,165,0,.5),
+      0 0 80px rgba(255,165,0,.5);
+
+  }
+
+}
+
+
+/* =====================================================
+   MESSAGE
+===================================================== */
+
+.message{
+
+  position:absolute;
+
+  z-index:20;
+
+  left:50%;
+
+  bottom:clamp(105px, 15vh, 145px);
+
+  transform:translateX(-50%);
+
+  width:min(92%, 600px);
+
+  min-height:42px;
+
+  color:#8c5d44;
+
+  font-family:"Prompt",sans-serif;
+
+  font-size:clamp(13px, 1.7vw, 16px);
+
+  font-weight:400;
+
+  text-align:center;
+
+  line-height:1.7;
+
+  text-shadow:none;
+
+  padding:0 15px;
+
+}
+
+
+/* =====================================================
+   BUTTON AREA
+===================================================== */
+
+.mic-btn,
+.next-btn{
+
+  position:absolute;
+
+  z-index:25;
+
+  left:50%;
+
+  bottom:clamp(45px, 8vh, 75px);
+
+  transform:translateX(-50%);
+
+  color:#8c5d44;
+
+  background:#fff;
+
+  border:2px solid #92c6e6;
+
+  border-radius:30px;
+
+  box-shadow:none;
+
+  font-family:"Prompt",sans-serif;
+
+  font-size:clamp(13px, 1.7vw, 15px);
+
+  font-weight:500;
+
+  cursor:pointer;
+
+  transition:.25s ease;
+
+  padding:9px 20px;
+
+  width:min(80%, 230px);
+
+  min-width:175px;
+
+  white-space:nowrap;
+
+}
+
+
+/* =====================================================
+   INITIAL STATE
+===================================================== */
+
+.mic-btn{
+  display:none;
+}
+
+
+.next-btn{
+  display:none;
+}
+
+
+/* =====================================================
+   HOVER
+===================================================== */
+
+.mic-btn:hover,
+.next-btn:hover{
+
+  background:#fff;
+
+  color:#8c5d44;
+
+  border-color:#92c6e6;
+
+  transform:
+    translateX(-50%)
+    translateY(-2px);
+
+}
+
+
+/* =====================================================
+   ACTIVE
+===================================================== */
+
+.mic-btn:active,
+.next-btn:active{
+
+  transform:
+    translateX(-50%)
+    translateY(0);
+
+}
+
+
+/* =====================================================
+   FIREWORK
+===================================================== */
+
+.pyro{
+
+  position:absolute;
+
+  top:-45px;
+  left:50%;
+
+  width:20px;
+  height:20px;
+
+  transform:
+    translateX(-50%);
+
+  pointer-events:none;
+
+  display:none;
+
+  z-index:30;
+
+}
+
+
+.pyro > div{
+
+  position:absolute;
+
+  width:5px;
+  height:5px;
+
+  border-radius:50%;
+
+  animation:
+    bang 1s ease-out infinite,
+    gravity 1s ease-in infinite;
+
+}
+
+
+@keyframes bang{
+
+  to{
+
+    box-shadow:
+
+      -90px -60px #ff4f81,
+      -55px -95px #ffd43b,
+      0 -110px #6ddcff,
+      60px -80px #b47cff,
+      100px -30px #ff8a3d,
+      80px 35px #6ee7a8,
+      20px 75px #ff4f81,
+      -50px 60px #ffd43b,
+      -100px 20px #6ddcff;
+
+  }
+
+}
+
+
+@keyframes gravity{
+
+  to{
+
+    transform:
+      translateY(100px);
+
+    opacity:0;
+
+  }
+
+}
+
+
+/* =====================================================
+   STARS
+===================================================== */
+
+.stars-layer{
+
+  position:fixed;
+
+  inset:0;
+
+  width:100vw;
+  height:100svh;
+
+  overflow:hidden;
+
+  pointer-events:none;
+
+  z-index:999;
+
+}
+
+
+.star-piece{
+
+  position:absolute;
+
+  top:-60px;
+
+  display:block;
+
+  opacity:0;
+
+  width:25px;
+  height:auto;
+
+  object-fit:contain;
+
+  will-change:
+    transform,
+    opacity;
+
+  animation-name:
+    starFall;
+
+  animation-timing-function:
+    cubic-bezier(.25,.46,.45,.94);
+
+  animation-fill-mode:
+    forwards;
+
+}
+
+
+@keyframes starFall{
+
+  0%{
+
+    transform:
+      translate3d(0,-60px,0)
+      rotate(0deg)
+      scale(.7);
+
+    opacity:0;
+
+  }
+
+  8%{
+    opacity:1;
+  }
+
+  25%{
+
+    transform:
+      translate3d(
+        var(--drift1),
+        25vh,
+        0
+      )
+      rotate(90deg)
+      scale(1);
+
+  }
+
+  50%{
+
+    transform:
+      translate3d(
+        var(--drift2),
+        55vh,
+        0
+      )
+      rotate(180deg)
+      scale(.9);
+
+  }
+
+  75%{
+
+    transform:
+      translate3d(
+        var(--drift3),
+        80vh,
+        0
+      )
+      rotate(270deg)
+      scale(1.05);
+
+  }
+
+  92%{
+    opacity:1;
+  }
+
+  100%{
+
+    transform:
+      translate3d(
+        var(--drift4),
+        115vh,
+        0
+      )
+      rotate(360deg)
+      scale(.75);
+
+    opacity:0;
+
+  }
+
+}
+
+
+/* =====================================================
+   TABLET / IPAD
+===================================================== */
+
+@media
+(min-width:501px)
+and
+(max-width:1024px){
+
+  .cake{
+
+    transform:scale(
+      clamp(.85, 1.05, 1)
+    );
+
+  }
+
+  .happy{
+
+    top:8vh;
+
+    font-size:22px;
+
+  }
+
+  .message{
+
+    bottom:14vh;
+
+    font-size:15px;
+
+  }
+
+  .mic-btn,
+  .next-btn{
+
+    bottom:7vh;
+
+    width:220px;
+
+  }
+
+}
+
+
+/* =====================================================
+   IPAD PORTRAIT
+===================================================== */
+
+@media
+(min-width:501px)
+and
+(max-width:1024px)
+and
+(orientation:portrait){
+
+  .cake{
+
+    transform:scale(.95);
+
+  }
+
+  .happy{
+
+    top:9vh;
+
+  }
+
+  .message{
+
+    bottom:14vh;
+
+  }
+
+}
+
+
+/* =====================================================
+   IPAD LANDSCAPE
+===================================================== */
+
+@media
+(min-width:501px)
+and
+(max-width:1024px)
+and
+(orientation:landscape){
+
+  .cake{
+
+    transform:scale(.78);
+
+    margin-top:-65px;
+
+  }
+
+  .happy{
+
+    top:5vh;
+
+  }
+
+  .message{
+
+    bottom:12vh;
+
+  }
+
+  .mic-btn,
+  .next-btn{
+
+    bottom:4vh;
+
+  }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:500px){
+
+  .happy{
+
+    top:6vh;
+
+    font-size:19px;
+
+  }
+
+  .cake{
+
+    transform:scale(.88);
+
+  }
+
+  .message{
+
+    bottom:115px;
+
+    width:94%;
+
+    font-size:14px;
+
+  }
+
+  .mic-btn,
+  .next-btn{
+
+    bottom:55px;
+
+    width:210px;
+
+  }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media(max-width:380px){
+
+  .happy{
+
+    top:5vh;
+
+    font-size:17px;
+
+  }
+
+  .cake{
+
+    transform:scale(.72);
+
+  }
+
+  .message{
+
+    bottom:105px;
+
+    font-size:13px;
+
+  }
+
+  .mic-btn,
+  .next-btn{
+
+    bottom:45px;
+
+    width:190px;
+
+    min-width:170px;
+
+    font-size:13px;
+
+  }
+
+}
+
+
+/* =====================================================
+   VERY SHORT SCREEN
+===================================================== */
+
+@media(max-height:680px){
+
+  .happy{
+
+    top:25px;
+
+  }
+
+  .cake{
+
+    transform:scale(.70);
+
+  }
+
+  .message{
+
+    bottom:90px;
+
+  }
+
+  .mic-btn,
+  .next-btn{
+
+    bottom:30px;
+
+  }
+
+}
+
+
+/* =====================================================
+   VERY SHORT + MOBILE
+===================================================== */
+
+@media
+(max-width:500px)
+and
+(max-height:680px){
+
+  .cake{
+
+    transform:scale(.68);
+
+  }
+
+  .happy{
+
+    top:20px;
+
+  }
+
+  .message{
+
+    bottom:82px;
+
+    font-size:12px;
+
+  }
+
+  .mic-btn,
+  .next-btn{
+
+    bottom:25px;
+
+    padding:8px 16px;
+
+  }
+
+}
+
+
+/* =====================================================
+   LARGE DESKTOP
+===================================================== */
+
+@media(min-width:1200px){
+
+  .cake{
+
+    transform:scale(1.05);
+
+  }
+
+  .happy{
+
+    font-size:25px;
+
+  }
+
+  .message{
+
+    font-size:16px;
+
+  }
+
+  .mic-btn,
+  .next-btn{
+
+    width:230px;
+
+  }
+
+}
+
+</style>
+
 </head>
 
+
 <body>
-  <div class="container">
-    <div class="shell center">
 
-      <!-- เอฟเฟกต์ลอย -->
-      <div id="fxLayer" aria-hidden="true"></div>
 
-      <!-- TITLE -->
-      <h2 id="titleText">มีของขวัญมาส่งให้คนพิเศษ</h2>
+<!-- =====================================================
+     STARS
+===================================================== -->
 
-      <!-- ✅ การ์ดขาวใบเดียว: รูป + เนื้อหา -->
-      <div class="white-card">
+<div
+  class="stars-layer"
+  id="starsLayer">
+</div>
 
-        <!-- รูป (gift.png -> flowers.png) -->
-        <div class="gift-stage" id="giftStage">
-          <img
-            class="gift-img"
-            id="giftImg"
-            src="assets/gift.png"
-            alt="gift"
-            loading="eager"
-            decoding="async"
-          />
-        </div>
 
-        <!-- STEP 1 : Open gift (อยู่ในการ์ดเดียวกัน) -->
-        <div class="card-body" id="step1">
-          <p class="subtle">
-            ฮันแน่ ยิ้มก่อนเปิด<br />
-          </p>
+<!-- =====================================================
+     HAPPY
+===================================================== -->
 
-          <div style="margin-top:14px;">
-            <button class="btn" id="openGiftBtn">เปิดของขวัญ</button>
-          </div>
-        </div>
+<div
+  class="happy"
+  id="happy">
 
-        <!-- STEP 2 : Anniversary message (อยู่ในการ์ดเดียวกัน) -->
-        <div class="card-body" id="step2" style="display:none;">
-          <h2>Happy Anniversary </h2>
-
-          <p class="subtle">สุขสันต์วันครบรอบ</p>
-         
-          <div style="margin-top:16px;">
-            <a class="btn secondary" href="pass.html">ไปหน้าถัดไป</a>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </div>
-<!-- Floating Hearts Background -->
-<div class="bg-heart-layer">
+  <img
+    src="text4.png"
+    alt=""
+    draggable="false">
 
 </div>
 
-  <!-- JS -->
-  <script src="js/anniversary.js"></script>
+
+<!-- =====================================================
+     CAKE
+===================================================== -->
+
+<div
+  class="cake"
+  id="cake">
+
+  <div class="plate"></div>
+
+  <div class="layer layer-bottom"></div>
+
+  <div class="layer layer-middle"></div>
+
+  <div class="layer layer-top"></div>
+
+  <div class="icing"></div>
+
+  <div class="drip drip1"></div>
+
+  <div class="drip drip2"></div>
+
+  <div class="drip drip3"></div>
+
+
+  <!-- FIREWORK -->
+
+  <div
+    class="pyro"
+    id="pyro">
+
+    <div></div>
+    <div></div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     MESSAGE
+===================================================== -->
+
+<div
+  class="message"
+  id="msg">
+
+  แตะบนเค้กเพื่อปักเทียน
+
+</div>
+
+
+<!-- =====================================================
+     MICROPHONE BUTTON
+===================================================== -->
+
+<button
+  class="mic-btn"
+  id="micBtn">
+
+  อนุญาตให้ใช้ไมโครโฟน
+
+</button>
+
+
+<!-- =====================================================
+     NEXT BUTTON
+===================================================== -->
+
+<button
+  class="next-btn"
+  id="nextBtn">
+
+  ถัดไป
+
+</button>
+
+
+<script>
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const cake =
+  document.getElementById("cake");
+
+const msg =
+  document.getElementById("msg");
+
+const micBtn =
+  document.getElementById("micBtn");
+
+const pyro =
+  document.getElementById("pyro");
+
+const happy =
+  document.getElementById("happy");
+
+const nextBtn =
+  document.getElementById("nextBtn");
+
+const starsLayer =
+  document.getElementById("starsLayer");
+
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+let flames = [];
+
+let candleCount = 0;
+
+let hasBlown = false;
+
+let detecting = false;
+
+
+/* =====================================================
+   CANDLE COLORS
+===================================================== */
+
+const candleColors = [
+
+  "candle-blue",
+
+  "candle-yellow",
+
+  "candle-pink",
+
+  "candle-purple",
+
+  "candle-green"
+
+];
+
+
+/* =====================================================
+   INITIAL STATE
+===================================================== */
+
+micBtn.style.display =
+  "none";
+
+nextBtn.style.display =
+  "none";
+
+
+/* =====================================================
+   PLACE CANDLE
+===================================================== */
+
+cake.addEventListener(
+  "click",
+  function(e){
+
+    if(hasBlown){
+      return;
+    }
+
+
+    const r =
+      cake.getBoundingClientRect();
+
+
+    const x =
+      e.clientX - r.left;
+
+
+    const y =
+      e.clientY - r.top;
+
+
+    /* =================================================
+       ONLY TOP OF CAKE
+    ================================================= */
+
+    if(
+      y < 15 ||
+      y > 75
+    ){
+
+      return;
+
+    }
+
+
+    /* =================================================
+       CREATE CANDLE
+    ================================================= */
+
+    const candle =
+      document.createElement("div");
+
+
+    candle.className =
+      "candle " +
+      candleColors[
+        candleCount %
+        candleColors.length
+      ];
+
+
+    candle.style.left =
+      x + "px";
+
+
+    candle.style.top =
+      y + "px";
+
+
+    candleCount++;
+
+
+    /* =================================================
+       CREATE FLAME
+    ================================================= */
+
+    const flame =
+      document.createElement("div");
+
+
+    flame.className =
+      "flame";
+
+
+    candle.appendChild(
+      flame
+    );
+
+
+    cake.appendChild(
+      candle
+    );
+
+
+    flames.push(
+      flame
+    );
+
+
+    /* =================================================
+       MESSAGE
+    ================================================= */
+
+    msg.textContent =
+      "ปักเทียนแล้ว! กดปุ่มด้านล่างเพื่ออนุญาตไมโครโฟน";
+
+
+    /* =================================================
+       SHOW MICROPHONE
+    ================================================= */
+
+    micBtn.style.display =
+      "block";
+
+
+    nextBtn.style.display =
+      "none";
+
+  }
+);
+
+
+/* =====================================================
+   MICROPHONE BUTTON
+===================================================== */
+
+micBtn.onclick =
+  async function(){
+
+    if(detecting){
+      return;
+    }
+
+
+    detecting = true;
+
+
+    micBtn.style.display =
+      "none";
+
+
+    nextBtn.style.display =
+      "none";
+
+
+    msg.textContent =
+      "กำลังเปิดไมโครโฟน...";
+
+
+    try{
+
+
+      /* =================================================
+         CHECK MICROPHONE
+      ================================================= */
+
+      if(
+        !navigator.mediaDevices ||
+        !navigator.mediaDevices.getUserMedia
+      ){
+
+        throw new Error(
+          "Microphone API is not supported"
+        );
+
+      }
+
+
+      /* =================================================
+         REQUEST MICROPHONE
+      ================================================= */
+
+      const stream =
+        await navigator.mediaDevices
+        .getUserMedia({
+          audio:true
+        });
+
+
+      /* =================================================
+         AUDIO CONTEXT
+      ================================================= */
+
+      const AudioContext =
+        window.AudioContext ||
+        window.webkitAudioContext;
+
+
+      if(!AudioContext){
+
+        throw new Error(
+          "AudioContext is not supported"
+        );
+
+      }
+
+
+      const audioContext =
+        new AudioContext();
+
+
+      await audioContext.resume();
+
+
+      /* =================================================
+         AUDIO SOURCE
+      ================================================= */
+
+      const source =
+        audioContext
+        .createMediaStreamSource(
+          stream
+        );
+
+
+      /* =================================================
+         ANALYSER
+      ================================================= */
+
+      const analyser =
+        audioContext
+        .createAnalyser();
+
+
+      analyser.fftSize =
+        512;
+
+
+      analyser.smoothingTimeConstant =
+        0.15;
+
+
+      source.connect(
+        analyser
+      );
+
+
+      const data =
+        new Uint8Array(
+          analyser.frequencyBinCount
+        );
+
+
+      /* =================================================
+         WAIT BEFORE DETECTING
+      ================================================= */
+
+      setTimeout(
+        function(){
+
+          if(hasBlown){
+            return;
+          }
+
+
+          msg.textContent =
+            "เป่าเทียนได้เลย!";
+
+
+          detectBlow(
+            analyser,
+            data,
+            stream,
+            audioContext
+          );
+
+        },
+        1000
+      );
+
+
+    }catch(error){
+
+      console.error(
+        "Microphone error:",
+        error
+      );
+
+
+      detecting =
+        false;
+
+
+      msg.textContent =
+        "ไม่สามารถเปิดไมโครโฟนได้";
+
+
+      micBtn.style.display =
+        "block";
+
+
+      nextBtn.style.display =
+        "none";
+
+    }
+
+  };
+
+
+/* =====================================================
+   BLOW DETECTION
+===================================================== */
+
+function detectBlow(
+  analyser,
+  data,
+  stream,
+  audioContext
+){
+
+  if(hasBlown){
+    return;
+  }
+
+
+  analyser.getByteFrequencyData(
+    data
+  );
+
+
+  let total =
+    0;
+
+
+  for(
+    let i = 0;
+    i < data.length;
+    i++
+  ){
+
+    total +=
+      data[i];
+
+  }
+
+
+  const volume =
+    total / data.length;
+
+
+  const BLOW_THRESHOLD =
+    45;
+
+
+  if(
+    volume >
+    BLOW_THRESHOLD
+  ){
+
+    finishBlow(
+      stream,
+      audioContext
+    );
+
+    return;
+
+  }
+
+
+  requestAnimationFrame(
+    function(){
+
+      detectBlow(
+        analyser,
+        data,
+        stream,
+        audioContext
+      );
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   FINISH BLOW
+===================================================== */
+
+function finishBlow(
+  stream,
+  audioContext
+){
+
+  if(hasBlown){
+    return;
+  }
+
+
+  hasBlown =
+    true;
+
+
+  detecting =
+    false;
+
+
+  /* ===================================================
+     EXTINGUISH FLAMES
+  =================================================== */
+
+  flames.forEach(
+    function(flame){
+
+      flame.style.opacity =
+        "0";
+
+
+      flame.style.animation =
+        "none";
+
+    }
+  );
+
+
+  /* ===================================================
+     FIREWORK
+  =================================================== */
+
+  pyro.style.display =
+    "block";
+
+
+  /* ===================================================
+     HAPPY BIRTHDAY
+  =================================================== */
+
+  happy.style.display =
+    "block";
+
+
+  /* ===================================================
+     CLEAR MESSAGE
+  =================================================== */
+
+  msg.textContent =
+    "";
+
+
+  /* ===================================================
+     HIDE MICROPHONE
+  =================================================== */
+
+  micBtn.style.display =
+    "none";
+
+
+  /* ===================================================
+     SHOW NEXT
+  =================================================== */
+
+  nextBtn.style.display =
+    "block";
+
+
+  nextBtn.style.visibility =
+    "visible";
+
+
+  nextBtn.style.opacity =
+    "1";
+
+
+  /* ===================================================
+     STAR EFFECT
+  =================================================== */
+
+  spawnStars();
+
+
+  /* ===================================================
+     STOP MICROPHONE
+  =================================================== */
+
+  if(stream){
+
+    stream
+      .getTracks()
+      .forEach(
+        function(track){
+
+          track.stop();
+
+        }
+      );
+
+  }
+
+
+  /* ===================================================
+     CLOSE AUDIO
+  =================================================== */
+
+  if(
+    audioContext &&
+    audioContext.state !==
+    "closed"
+  ){
+
+    audioContext.close();
+
+  }
+
+}
+
+
+/* =====================================================
+   STAR EFFECT
+===================================================== */
+
+function spawnStars(){
+
+  const STAR_COUNT =
+    100;
+
+
+  const vw =
+    window.innerWidth;
+
+
+  for(
+    let i = 0;
+    i < STAR_COUNT;
+    i++
+  ){
+
+    const img =
+      document.createElement("img");
+
+
+    /* =================================================
+       STAR IMAGE
+    ================================================= */
+
+    const starNum =
+      (i % 4) + 1;
+
+
+    img.src =
+      `star${starNum}.png`;
+
+
+    img.className =
+      "star-piece";
+
+
+    /* =================================================
+       SIZE
+    ================================================= */
+
+    const size =
+      18 +
+      Math.random() * 25;
+
+
+    img.style.width =
+      size + "px";
+
+
+    img.style.height =
+      "auto";
+
+
+    /* =================================================
+       START X
+    ================================================= */
+
+    const startX =
+      Math.random() *
+      vw;
+
+
+    img.style.left =
+      startX + "px";
+
+
+    /* =================================================
+       DRIFT
+    ================================================= */
+
+    const drift1 =
+      (
+        Math.random() * 240 -
+        120
+      ) + "px";
+
+
+    const drift2 =
+      (
+        Math.random() * 360 -
+        180
+      ) + "px";
+
+
+    const drift3 =
+      (
+        Math.random() * 480 -
+        240
+      ) + "px";
+
+
+    const drift4 =
+      (
+        Math.random() * 600 -
+        300
+      ) + "px";
+
+
+    img.style.setProperty(
+      "--drift1",
+      drift1
+    );
+
+
+    img.style.setProperty(
+      "--drift2",
+      drift2
+    );
+
+
+    img.style.setProperty(
+      "--drift3",
+      drift3
+    );
+
+
+    img.style.setProperty(
+      "--drift4",
+      drift4
+    );
+
+
+    /* =================================================
+       RANDOM SPEED
+    ================================================= */
+
+    const duration =
+      5 +
+      Math.random() * 7;
+
+
+    const delay =
+      Math.random() * 3;
+
+
+    img.style.animationDuration =
+      duration + "s";
+
+
+    img.style.animationDelay =
+      delay + "s";
+
+
+    /* =================================================
+       ADD STAR
+    ================================================= */
+
+    starsLayer.appendChild(
+      img
+    );
+
+
+    /* =================================================
+       REMOVE STAR
+    ================================================= */
+
+    setTimeout(
+      function(){
+
+        img.remove();
+
+      },
+
+      (
+        duration +
+        delay
+      ) * 1000 + 1000
+
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   NEXT BUTTON
+===================================================== */
+
+nextBtn.onclick =
+  function(){
+
+    window.location.href =
+      "letter.html";
+
+  };
+
+</script>
+
 </body>
 </html>

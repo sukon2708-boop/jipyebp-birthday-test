@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+
+<html lang="th">
+
+<head>
+
+  <meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+
+>
+
+  <title>ความทรงจำของเรา</title>
+
+  <!-- =========================
+       FONT
+  ========================== -->
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    /* =====================================================
+       RESET
+    ===================================================== */
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html,
+    body {
+
+      width: 100%;
+      height: 100%;
+
+      margin: 0;
+      padding: 0;
+
+      overflow: hidden;
+    }
+
+
+    /* =====================================================
+       BODY
+    ===================================================== */
+
+    body {
+
+      font-family:
+        "Prompt",
+        sans-serif;
+
+      background:
+        url("bg.png")
+        center center /
+        cover
+        no-repeat;
+
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
+
+      color: #8c5d44;
+
+      position: relative;
+    }
+
+
+    /* =====================================================
+       MAIN CONTAINER
+    ===================================================== */
+
+    .pic-container {
+
+      position: relative;
+
+      width:
+        min(
+          435px,
+          100vw
+        );
+
+      height:
+        min(
+          700px,
+          100vh
+        );
+
+      overflow: hidden;
+    }
+
+
+    /* =====================================================
+       TITLE IMAGE
+       text3.png
+    ===================================================== */
+
+    .title {
+
+      position: absolute;
+
+      top: 15px;
+
+      left: 50%;
+
+      transform:
+        translateX(-50%);
+
+      width:
+        min(
+          350px,
+          calc(100% - 20px)
+        );
+
+      z-index: 200;
+
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
+
+      pointer-events: none;
+      user-select: none;
+    }
+
+
+    .title img {
+
+      display: block;
+
+      width: 100%;
+      height: auto;
+
+      object-fit: contain;
+
+      user-select: none;
+      pointer-events: none;
+
+      -webkit-user-drag: none;
+    }
+
+
+    /* =====================================================
+       PHOTOBOOTH STAGE
+    ===================================================== */
+
+    .booth-stage {
+
+      position: absolute;
+
+      left: 50%;
+
+      top:
+        clamp(
+          125px,
+          20vh,
+          145px
+        );
+
+      width:
+        min(
+          435px,
+          100vw
+        );
+
+      height: 520px;
+
+      transform:
+        translateX(-50%);
+
+      overflow: visible;
+    }
+
+
+    /* =====================================================
+       PHOTOBOOTH
+    ===================================================== */
+
+    .photobooth {
+
+      position: absolute;
+
+      left: 50%;
+      top: 0;
+
+      width: 100%;
+      height: auto;
+
+      display: block;
+
+      transform:
+        translateX(-50%);
+
+      z-index: 20;
+
+      user-select: none;
+      pointer-events: none;
+    }
+
+
+    /* =====================================================
+       PAPER
+
+       จุดเริ่มต้น = 120px
+
+       จากนั้น JavaScript จะเพิ่ม class .show
+       เพื่อให้กระดาษเลื่อนลงไปที่ 180px
+    ===================================================== */
+
+    .paper {
+
+      position: absolute;
+
+      left: 50%;
+
+      top: 120px;
+
+      width:
+        min(
+          245px,
+          56.3%
+        );
+
+      height: auto;
+
+      padding:
+        10px
+        10px
+        18px;
+
+      background: #fff;
+
+      z-index: 100;
+
+      transform:
+        translateX(-50%);
+
+      opacity: 1;
+
+      box-shadow:
+        0 8px 25px
+        rgba(
+          0,
+          0,
+          0,
+          .15
+        );
+
+      transition:
+        top 7s
+        cubic-bezier(
+          .20,
+          .60,
+          .25,
+          1
+        );
+    }
+
+
+    /* =====================================================
+       PAPER SHOW
+
+       จาก 120px
+       ลงมา 180px
+    ===================================================== */
+
+    .paper.show {
+
+      top: 180px;
+    }
+
+
+    /* =====================================================
+       MEMORY PHOTO
+
+       photo.png = 1200 x 1800
+       อัตราส่วน 2:3
+    ===================================================== */
+
+    .memory-photo {
+
+      display: block;
+
+      width: 100%;
+      height: auto;
+
+      aspect-ratio:
+        2 / 3;
+
+      object-fit: contain;
+
+      margin: 0;
+      padding: 0;
+
+      border: 0;
+
+      user-select: none;
+
+      /* แก้ให้สามารถกดรูปได้ */
+      pointer-events: auto;
+
+      cursor: pointer;
+
+      -webkit-user-drag: none;
+    }
+
+
+    /* =====================================================
+       NAVIGATION
+    ===================================================== */
+
+    .navigation {
+
+      position: absolute;
+
+      left: 50%;
+      bottom: 15px;
+
+      transform: translateX(-50%);
+
+      width: 100%;
+
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
+
+      z-index: 300;
+
+      padding: 0 10px;
+    }
+
+
+    /* Mobile */
+
+    @media (max-width: 500px) {
+
+      .navigation {
+
+        bottom: 15px;
+      }
+    }
+
+
+    /* Small Mobile */
+
+    @media (max-width: 380px) {
+
+      .navigation {
+
+        bottom: 15px;
+      }
+    }
+
+
+    /* Very Small Mobile */
+
+    @media (max-width: 340px) {
+
+      .navigation {
+
+        bottom: 12px;
+      }
+    }
+
+
+    /* Short Screen */
+
+    @media (max-height: 700px) {
+
+      .navigation {
+
+        bottom: 15px;
+      }
+    }
+
+
+    /* Very Short Screen */
+
+    @media (max-height: 600px) {
+
+      .navigation {
+
+        bottom: 10px;
+      }
+    }
+
+
+    /* =====================================================
+       BACK BUTTON
+       back.png
+    ===================================================== */
+
+    .nav-btn {
+
+      display: block;
+
+      width: 145px;
+      height: auto;
+
+      padding: 0;
+      margin: 0;
+
+      border: none;
+      border-radius: 0;
+
+      background: transparent;
+
+      box-shadow: none;
+
+      text-decoration: none;
+
+      cursor: pointer;
+
+      line-height: 0;
+
+      user-select: none;
+
+      -webkit-user-drag: none;
+
+      transition:
+        transform .2s ease;
+    }
+
+
+    .nav-btn img {
+
+      display: block;
+
+      width: 100%;
+      height: auto;
+
+      border: none;
+
+      user-select: none;
+      pointer-events: none;
+
+      -webkit-user-drag: none;
+    }
+
+
+    .nav-btn:hover {
+
+      transform:
+        translateY(-2px);
+    }
+
+
+    .nav-btn:active {
+
+      transform:
+        scale(.96);
+    }
+
+
+    /* =====================================================
+       MOBILE
+    ===================================================== */
+
+    @media (max-width: 500px) {
+
+      .pic-container {
+
+        width: 100vw;
+
+        height: 100vh;
+      }
+
+
+      /* =========================
+         TITLE
+      ========================== */
+
+      .title {
+
+        top: 15px;
+
+        width:
+          min(
+            350px,
+            calc(100% - 20px)
+          );
+      }
+
+
+      /* =========================
+         STAGE
+      ========================== */
+
+      .booth-stage {
+
+        width: 100vw;
+
+        height: 500px;
+
+        top: 135px;
+      }
+
+
+      /* =========================
+         PHOTOBOOTH
+      ========================== */
+
+      .photobooth {
+
+        width: 100vw;
+
+        max-width: 435px;
+      }
+
+
+      /* =========================
+         PAPER
+      ========================== */
+
+      .paper {
+
+        width:
+          min(
+            58vw,
+            245px
+          );
+
+        top: 120px;
+
+        padding:
+          8px
+          8px
+          15px;
+      }
+
+
+      .paper.show {
+
+        top: 180px;
+      }
+
+
+      /* =========================
+         NAVIGATION
+      ========================== */
+
+      .navigation {
+
+        bottom: 35px;
+      }
+
+
+      .nav-btn {
+
+        width:
+          min(
+            145px,
+            45vw
+          );
+      }
+
+    }
+
+
+    /* =====================================================
+       SMALL MOBILE
+    ===================================================== */
+
+    @media (max-width: 380px) {
+
+      .title {
+
+        top: 12px;
+
+        width:
+          min(
+            320px,
+            calc(100% - 20px)
+          );
+      }
+
+
+      .booth-stage {
+
+        top: 128px;
+
+        height: 470px;
+      }
+
+
+      .photobooth {
+
+        width: 100vw;
+      }
+
+
+      .paper {
+
+        width:
+          min(
+            58vw,
+            230px
+          );
+
+        top: 115px;
+
+        padding:
+          7px
+          7px
+          13px;
+      }
+
+
+      .paper.show {
+
+        top: 175px;
+      }
+
+
+      .navigation {
+
+        bottom: 35px;
+      }
+
+
+      .nav-btn {
+
+        width:
+          min(
+            135px,
+            43vw
+          );
+      }
+
+    }
+
+
+    /* =====================================================
+       VERY SMALL MOBILE
+    ===================================================== */
+
+    @media (max-width: 340px) {
+
+      .title {
+
+        top: 10px;
+
+        width:
+          min(
+            290px,
+            calc(100% - 20px)
+          );
+      }
+
+
+      .booth-stage {
+
+        top: 120px;
+      }
+
+
+      .paper {
+
+        width: 58vw;
+
+        top: 110px;
+      }
+
+
+      .paper.show {
+
+        top: 170px;
+      }
+
+
+      .navigation {
+
+        bottom: 32px;
+      }
+
+
+      .nav-btn {
+
+        width:
+          min(
+            130px,
+            43vw
+          );
+      }
+
+    }
+
+
+    /* =====================================================
+       SHORT SCREEN
+    ===================================================== */
+
+    @media (max-height: 700px) {
+
+      .title {
+
+        top: 8px;
+      }
+
+
+      .booth-stage {
+
+        top: 100px;
+
+        height: 430px;
+      }
+
+
+      .photobooth {
+
+        width:
+          min(
+            435px,
+            100vw
+          );
+      }
+
+
+      .paper {
+
+        top: 105px;
+      }
+
+
+      .paper.show {
+
+        top: 165px;
+      }
+
+
+      .navigation {
+
+        bottom: 30px;
+      }
+
+    }
+
+
+    /* =====================================================
+       VERY SHORT SCREEN
+    ===================================================== */
+
+    @media (max-height: 600px) {
+
+      .title {
+
+        top: 4px;
+
+        width:
+          min(
+            300px,
+            calc(100% - 20px)
+          );
+      }
+
+
+      .booth-stage {
+
+        top: 78px;
+
+        height: 360px;
+      }
+
+
+      .photobooth {
+
+        width:
+          min(
+            380px,
+            100vw
+          );
+      }
+
+
+      .paper {
+
+        width:
+          min(
+            215px,
+            56%
+          );
+
+        top: 90px;
+      }
+
+
+      .paper.show {
+
+        top: 150px;
+      }
+
+
+      .navigation {
+
+        bottom: 25px;
+      }
+
+
+      .nav-btn {
+
+        width: 125px;
+      }
+
+    }
+
+
+    /* =====================================================
+       TABLET / iPAD PORTRAIT
+    ===================================================== */
+
+    @media
+      (min-width: 501px)
+      and (max-width: 900px)
+      and (min-height: 601px) {
+
+      .pic-container {
+
+        width:
+          min(
+            435px,
+            88vw
+          );
+
+        height:
+          min(
+            700px,
+            94vh
+          );
+      }
+
+
+      .title {
+
+        width:
+          min(
+            350px,
+            calc(100% - 20px)
+          );
+      }
+
+
+      .booth-stage {
+
+        width:
+          min(
+            435px,
+            88vw
+          );
+
+        top:
+          min(
+            145px,
+            20vh
+          );
+      }
+
+
+      .photobooth {
+
+        width: 100%;
+      }
+
+
+      .paper {
+
+        width:
+          min(
+            245px,
+            56.3%
+          );
+
+        top: 120px;
+      }
+
+
+      .paper.show {
+
+        top: 180px;
+      }
+
+
+      .navigation {
+
+        bottom: 35px;
+      }
+
+    }
+
+
+    /* =====================================================
+       TABLET / iPAD LANDSCAPE
+    ===================================================== */
+
+    @media
+      (min-width: 700px)
+      and (max-height: 600px) {
+
+      .pic-container {
+
+        width: 435px;
+
+        height: 100vh;
+      }
+
+
+      .title {
+
+        top: 4px;
+
+        width: 300px;
+      }
+
+
+      .booth-stage {
+
+        width: 360px;
+
+        height: 350px;
+
+        top: 70px;
+      }
+
+
+      .photobooth {
+
+        width: 360px;
+      }
+
+
+      .paper {
+
+        width: 205px;
+
+        top: 82px;
+      }
+
+
+      .paper.show {
+
+        top: 142px;
+      }
+
+
+      .navigation {
+
+        bottom: 25px;
+      }
+
+
+      .nav-btn {
+
+        width: 150px;
+      }
+
+    }
+
+
+    /* =====================================================
+       LARGE DESKTOP
+    ===================================================== */
+
+    @media (min-width: 1200px) {
+
+      .pic-container {
+
+        width: 435px;
+
+        height: 700px;
+      }
+
+
+      .title {
+
+        top: 15px;
+
+        width: 350px;
+      }
+
+
+      .booth-stage {
+
+        width: 435px;
+
+        height: 520px;
+
+        top: 145px;
+      }
+
+
+      .photobooth {
+
+        width: 435px;
+      }
+
+
+      .paper {
+
+        width: 245px;
+
+        top: 120px;
+      }
+
+
+      .paper.show {
+
+        top: 180px;
+      }
+
+
+      .navigation {
+
+        bottom: 35px;
+      }
+
+    }
+
+
+    /* =====================================================
+       FULL PHOTO VIEW
+       กด photo.png เพื่อดูรูปเต็ม
+    ===================================================== */
+
+    .photo-lightbox {
+
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 99999;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      width: 100vw;
+      height: 100vh;
+
+      padding: 15px;
+
+      background:
+        rgba(
+          0,
+          0,
+          0,
+          .90
+        );
+
+      opacity: 0;
+
+      visibility: hidden;
+
+      pointer-events: none;
+
+      transition:
+        opacity .25s ease,
+        visibility .25s ease;
+    }
+
+
+    .photo-lightbox.show {
+
+      opacity: 1;
+
+      visibility: visible;
+
+      pointer-events: auto;
+    }
+
+
+    /* =====================================================
+       รูปใหญ่
+    ===================================================== */
+
+    .photo-lightbox-image {
+
+      display: block;
+
+      width: auto;
+
+      height: auto;
+
+      max-width: 96vw;
+
+      max-height: 94vh;
+
+      object-fit: contain;
+
+      margin: auto;
+
+      padding: 0;
+
+      border: 0;
+
+      border-radius: 4px;
+
+      box-shadow:
+        0 10px 40px
+        rgba(
+          0,
+          0,
+          0,
+          .40
+        );
+
+      transform:
+        scale(.92);
+
+      transition:
+        transform .25s ease;
+
+      user-select: none;
+
+      -webkit-user-drag: none;
+    }
+
+
+    .photo-lightbox.show
+    .photo-lightbox-image {
+
+      transform:
+        scale(1);
+    }
+
+
+    /* =====================================================
+       CLOSE BUTTON
+    ===================================================== */
+
+    .photo-lightbox-close {
+
+      position: absolute;
+
+      top: 15px;
+
+      right: 15px;
+
+      width: 44px;
+
+      height: 44px;
+
+      padding: 0;
+
+      border: none;
+
+      border-radius: 50%;
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          .92
+        );
+
+      color: #3c3333;
+
+      font-family: Arial, sans-serif;
+
+      font-size: 30px;
+
+      line-height: 44px;
+
+      text-align: center;
+
+      cursor: pointer;
+
+      z-index: 2;
+
+      box-shadow:
+        0 4px 15px
+        rgba(
+          0,
+          0,
+          0,
+          .20
+        );
+
+      transition:
+        transform .2s ease;
+    }
+
+
+    .photo-lightbox-close:hover {
+
+      transform:
+        scale(1.06);
+    }
+
+
+    .photo-lightbox-close:active {
+
+      transform:
+        scale(.94);
+    }
+
+
+    /* =====================================================
+       MOBILE PHOTO VIEW
+    ===================================================== */
+
+    @media (max-width: 500px) {
+
+      .photo-lightbox {
+
+        padding: 8px;
+      }
+
+
+      .photo-lightbox-image {
+
+        max-width: 96vw;
+
+        max-height: 90vh;
+      }
+
+
+      .photo-lightbox-close {
+
+        top: 10px;
+
+        right: 10px;
+
+        width: 40px;
+
+        height: 40px;
+
+        font-size: 27px;
+
+        line-height: 40px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- =====================================================
+       MAIN
+  ===================================================== -->
+
+  <main class="pic-container">
+
+
+<!-- ===================================================
+     TITLE
+     text3.png
+=================================================== -->
+
+<div class="title">
+
+  <img
+    src="text3.png"
+    alt=""
+    draggable="false"
+  >
+
+</div>
+
+
+<!-- ===================================================
+     PHOTOBOOTH STAGE
+=================================================== -->
+
+<div class="booth-stage">
+
+
+  <!-- =================================================
+       PAPER
+  ================================================= -->
+
+  <div
+    class="paper"
+    id="paper"
+  >
+
+    <img
+      src="photo.png"
+      class="memory-photo"
+      id="memoryPhoto"
+      alt="ความทรงจำของเรา"
+      draggable="false"
+    >
+
+  </div>
+
+
+  <!-- =================================================
+       PHOTOBOOTH
+  ================================================= -->
+
+  <img
+    src="photobooth.png"
+    class="photobooth"
+    alt="Photo Booth"
+    draggable="false"
+  >
+
+</div>
+
+
+<!-- ===================================================
+     NAVIGATION
+=================================================== -->
+
+<div class="navigation">
+
+  <a
+    href="song.html"
+    class="nav-btn"
+    aria-label="ย้อนกลับ"
+  >
+
+    <img
+      src="back.png"
+      alt="ย้อนกลับ"
+      draggable="false"
+    >
+
+  </a>
+
+</div>
+
+
+  </main>
+
+  <!-- =====================================================
+       PHOTO LIGHTBOX
+       เปิดรูปใหญ่เมื่อกด photo.png
+  ===================================================== -->
+
+  <div
+    class="photo-lightbox"
+    id="photoLightbox"
+    aria-hidden="true"
+  >
+
+
+<button
+  class="photo-lightbox-close"
+  id="photoLightboxClose"
+  type="button"
+  aria-label="ปิดรูป"
+>
+  ×
+</button>
+
+<img
+  src="photo.png"
+  class="photo-lightbox-image"
+  id="photoLightboxImage"
+  alt="รูปเต็ม"
+  draggable="false"
+>
+
+
+  </div>
+
+  <!-- =====================================================
+       JAVASCRIPT
+  ===================================================== -->
+
+  <script>
+
+    const paper =
+      document.getElementById(
+        "paper"
+      );
+
+
+    /* =====================================================
+       START ANIMATION
+
+       กระดาษเริ่มที่ 120px
+       รอ 0.8 วินาที
+       แล้วเลื่อนลงไป 180px
+    ===================================================== */
+
+    window.addEventListener(
+      "load",
+      function () {
+
+        setTimeout(
+          function () {
+
+            paper.classList.add(
+              "show"
+            );
+
+          },
+          800
+        );
+
+      }
+    );
+
+
+    /* =====================================================
+       PHOTO LIGHTBOX
+
+       คลิก photo.png
+       = เปิดรูปใหญ่
+
+       คลิก X
+       = ปิด
+
+       คลิกพื้นหลัง
+       = ปิด
+
+       กด ESC
+       = ปิด
+    ===================================================== */
+
+    const memoryPhoto =
+      document.getElementById(
+        "memoryPhoto"
+      );
+
+    const photoLightbox =
+      document.getElementById(
+        "photoLightbox"
+      );
+
+    const photoLightboxClose =
+      document.getElementById(
+        "photoLightboxClose"
+      );
+
+    const photoLightboxImage =
+      document.getElementById(
+        "photoLightboxImage"
+      );
+
+
+    function openPhotoLightbox() {
+
+      photoLightboxImage.src =
+        memoryPhoto.src;
+
+      photoLightbox.classList.add(
+        "show"
+      );
+
+      photoLightbox.setAttribute(
+        "aria-hidden",
+        "false"
+      );
+
+      document.body.style.overflow =
+        "hidden";
+    }
+
+
+    function closePhotoLightbox() {
+
+      photoLightbox.classList.remove(
+        "show"
+      );
+
+      photoLightbox.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+      document.body.style.overflow =
+        "";
+    }
+
+
+    /* =====================================================
+       กดรูปได้ตลอดเวลา
+    ===================================================== */
+
+    memoryPhoto.addEventListener(
+      "click",
+      function () {
+
+        openPhotoLightbox();
+
+      }
+    );
+
+
+    /* =====================================================
+       ปุ่ม X
+    ===================================================== */
+
+    photoLightboxClose.addEventListener(
+      "click",
+      function () {
+
+        closePhotoLightbox();
+
+      }
+    );
+
+
+    /* =====================================================
+       กดพื้นหลังเพื่อปิด
+    ===================================================== */
+
+    photoLightbox.addEventListener(
+      "click",
+      function (event) {
+
+        if (
+          event.target ===
+          photoLightbox
+        ) {
+
+          closePhotoLightbox();
+
+        }
+
+      }
+    );
+
+
+    /* =====================================================
+       กด ESC เพื่อปิด
+    ===================================================== */
+
+    document.addEventListener(
+      "keydown",
+      function (event) {
+
+        if (
+          event.key === "Escape" &&
+          photoLightbox.classList.contains(
+            "show"
+          )
+        ) {
+
+          closePhotoLightbox();
+
+        }
+
+      }
+    );
+
+  </script>
+
+</body>
+
+</html>
