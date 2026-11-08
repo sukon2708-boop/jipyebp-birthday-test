@@ -7,23 +7,27 @@ body{background:#fafafa;overflow:hidden}
 
 /* ---------- หน้า 1 ---------- */
 #p1{background:#fafafa;justify-content:center;gap:28px;color:var(--ink);font-size:clamp(26px,5vw,40px);text-align:center}
-#p1 .letter{width:clamp(200px,46vw,350px);cursor:pointer;position:relative;z-index:2;filter:drop-shadow(0 10px 10px rgba(0,0,0,.12));
-  animation:letterIn 1s .3s cubic-bezier(.3,1.6,.5,1) both,letterIdle 3.4s 1.4s ease-in-out infinite;transition:scale .25s}
+#p1 .letter{width:clamp(220px,min(64vw,540px,48vh),540px);cursor:pointer;position:relative;z-index:2;filter:drop-shadow(0 10px 10px rgba(0,0,0,.12));
+  animation:letterIn 1s .3s cubic-bezier(.3,1.6,.5,1) both,letterIdle 3s 1.4s ease-in-out infinite;transition:scale .25s}
 #p1 .letter:hover{scale:1.1}
 #p1 .letter:active{scale:.94}
 #p1 .letter.opening{animation:letterOpen .65s ease-in forwards!important}
 @keyframes letterIn{0%{opacity:0;transform:translateY(60px) scale(.2) rotate(-25deg)}100%{opacity:1;transform:none}}
 @keyframes letterIdle{
-  0%,100%{transform:translateY(0) rotate(-2deg)}
-  30%{transform:translateY(-14px) rotate(2deg)}
-  55%{transform:translateY(0) rotate(0)}
-  60%{transform:rotate(-8deg) scale(1.05)}66%{transform:rotate(8deg) scale(1.05)}
-  72%{transform:rotate(-6deg)}78%{transform:rotate(5deg)}84%{transform:rotate(0)}}
+  0%{transform:translateY(0) rotate(-6deg) scale(1)}
+  15%{transform:translateY(-34px) rotate(6deg) scale(1.06)}
+  30%{transform:translateY(0) rotate(-6deg) scale(.97,1.03)}
+  38%{transform:translateY(8px) rotate(0) scale(1.06,.92)}
+  48%{transform:translateY(-22px) rotate(0) scale(1)}
+  56%{transform:translateY(0) rotate(0)}
+  62%{transform:rotate(-14deg) scale(1.08)}68%{transform:rotate(14deg) scale(1.08)}
+  74%{transform:rotate(-11deg)}80%{transform:rotate(10deg)}86%{transform:rotate(-5deg)}92%{transform:rotate(0)}
+  100%{transform:translateY(0) rotate(-6deg) scale(1)}}
 @keyframes letterOpen{0%{transform:scale(1) rotate(0)}40%{transform:scale(1.35) rotate(-10deg)}100%{transform:scale(0) rotate(40deg) translateY(-80px);opacity:0}}
 #p1 .t1,#p1 .t2{font-family:'Gaegu','Mali','Itim',cursive;font-weight:700;letter-spacing:.5px;font-size:clamp(34px,7vw,56px);line-height:1.1}
-#p1 .t1{animation:fadeUp 1s .2s both,textBob 2.6s 1.4s ease-in-out infinite}
-#p1 .t2{animation:fadeUp 1s .6s both,textBob 2.6s 1.9s ease-in-out infinite}
-@keyframes textBob{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-6px) rotate(1deg)}}
+#p1 .t1{animation:fadeUp 1s .2s both,textBob 2s 1.4s ease-in-out infinite}
+#p1 .t2{animation:fadeUp 1s .6s both,textBob 2s 1.7s ease-in-out infinite}
+@keyframes textBob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-14px) rotate(3deg)}}
 .floaties{position:absolute;inset:0;overflow:hidden;pointer-events:none}
 .floaties i{position:absolute;bottom:-40px;font-style:normal;color:#e8667a;opacity:0;animation:rise linear infinite}
 .floaties i:nth-child(even){color:#f2b45a}
@@ -44,8 +48,8 @@ body{background:#fafafa;overflow:hidden}
 .stage{position:relative;width:100%;max-width:900px;min-height:100%;padding:calc(64px + env(safe-area-inset-top)) max(22px,env(safe-area-inset-right)) calc(90px + env(safe-area-inset-bottom)) max(22px,env(safe-area-inset-left));display:flex;flex-direction:column;align-items:center}
 .party{position:fixed;top:calc(14px + env(safe-area-inset-top));width:clamp(56px,12vw,100px);opacity:0;z-index:5;transform-origin:50% 90%}
 .party.l{left:calc(14px + env(safe-area-inset-left))}.party.r{right:calc(14px + env(safe-area-inset-right))}
-#p2.show .party.l{animation:pop .8s .4s both,wiggleL 2.2s 1.3s ease-in-out infinite}
-#p2.show .party.r{animation:popR .8s .6s both,wiggleR 2.2s 1.5s ease-in-out infinite}
+#p2.show .party.l{animation:pop .8s .4s both}
+#p2.show .party.r{animation:popR .8s .6s both}
 @keyframes pop{0%{opacity:0;transform:scale(0) rotate(-40deg)}70%{transform:scale(1.25) rotate(8deg)}100%{opacity:1;transform:scale(1)}}
 @keyframes popR{0%{opacity:0;transform:scaleX(-1) scale(0) rotate(40deg)}70%{transform:scaleX(-1) scale(1.25) rotate(-8deg)}100%{opacity:1;transform:scaleX(-1) scale(1)}}
 @keyframes wiggleL{0%,100%{transform:rotate(-8deg) scale(1)}50%{transform:rotate(10deg) scale(1.1)}}
@@ -80,14 +84,14 @@ h1{font-family:'Itim','Mali',cursive;font-weight:400;font-size:clamp(24px,5.2vw,
 /* ---------- โทรศัพท์ ---------- */
 @media (max-width:480px){
   #p1{gap:22px}
-  #p1 .letter{width:64vw}
+  #p1 .letter{width:82vw;max-width:340px}
   .stage{padding-top:calc(80px + env(safe-area-inset-top))}
   #msg{font-size:15.5px;line-height:1.85}
 }
 /* ---------- โทรศัพท์แนวนอน / จอเตี้ย ---------- */
 @media (max-height:480px) and (orientation:landscape){
   #p1{flex-direction:row;flex-wrap:wrap;gap:6px 24px;align-content:center;justify-content:center}
-  #p1 .letter{width:min(34vh,200px)}
+  #p1 .letter{width:min(48vh,280px)}
   .stage{padding-top:calc(24px + env(safe-area-inset-top))}
   .hero{width:min(50vw,30vh,260px)}
 }
