@@ -1,0 +1,1515 @@
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+html {
+  width: 100%;
+  min-height: 100%;
+}
+
+
+body {
+  width: 100%;
+  min-height: 100vh;
+
+  margin: 0;
+
+  font-family: "Prompt", sans-serif;
+
+  overflow-x: hidden;
+}
+
+
+button,
+img {
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+img {
+  display: block;
+}
+
+
+/* =========================================================
+   SITE
+========================================================= */
+
+.site {
+  width: 100%;
+  min-height: 100vh;
+}
+
+
+/* =========================================================
+   PAGE 1
+   LETTER
+========================================================= */
+
+.letter-page {
+
+  position: fixed;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100dvh;
+
+  background: #ffffff;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  z-index: 100;
+
+  opacity: 1;
+
+  visibility: visible;
+
+  transition:
+    opacity 0.9s ease,
+    visibility 0.9s ease;
+}
+
+
+.letter-page.hide {
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   LETTER CONTAINER
+========================================================= */
+
+.letter-container {
+
+  position: relative;
+
+  width: 340px;
+  height: 420px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   LETTER HEADING
+========================================================= */
+
+.letter-heading {
+
+  margin-bottom: 18px;
+
+  font-family: "Itim", cursive;
+
+  font-size: 30px;
+
+  font-weight: 400;
+
+  color: #252525;
+
+  opacity: 0;
+
+  animation:
+    headingIn
+    0.9s
+    cubic-bezier(.175,.885,.32,1.275)
+    0.15s
+    forwards;
+}
+
+
+/* =========================================================
+   LETTER BUTTON
+========================================================= */
+
+.letter-button {
+
+  position: relative;
+
+  width: 185px;
+
+  padding: 0;
+
+  border: 0;
+
+  outline: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  opacity: 0;
+
+  transform:
+    translateY(35px)
+    scale(.65)
+    rotate(-8deg);
+
+  animation:
+    letterIn
+    1.1s
+    cubic-bezier(.175,.885,.32,1.275)
+    0.4s
+    forwards,
+
+    letterFloat
+    3.2s
+    ease-in-out
+    1.5s
+    infinite;
+}
+
+
+.letter-button img {
+
+  width: 100%;
+
+  height: auto;
+
+  user-select: none;
+
+  filter:
+    drop-shadow(
+      0 12px 10px rgba(0,0,0,.12)
+    );
+}
+
+
+/* ตอนกด */
+
+.letter-button.clicked {
+
+  animation:
+    letterClick
+    .55s
+    cubic-bezier(.175,.885,.32,1.275);
+}
+
+
+/* =========================================================
+   LETTER CAPTION
+========================================================= */
+
+.letter-caption {
+
+  margin-top: 18px;
+
+  font-family: "Itim", cursive;
+
+  font-size: 19px;
+
+  color: #333;
+
+  opacity: 0;
+
+  animation:
+    captionIn
+    .8s
+    ease
+    .75s
+    forwards;
+}
+
+
+/* =========================================================
+   LETTER SPARKS
+========================================================= */
+
+.letter-spark {
+
+  position: absolute;
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  opacity: 0;
+}
+
+
+.spark-1 {
+
+  top: 80px;
+  left: 48px;
+
+  background: #ff9fc5;
+}
+
+
+.spark-2 {
+
+  top: 125px;
+  right: 40px;
+
+  width: 6px;
+  height: 6px;
+
+  background: #ffd75c;
+}
+
+
+.spark-3 {
+
+  top: 195px;
+  left: 25px;
+
+  width: 5px;
+  height: 5px;
+
+  background: #9bd9ff;
+}
+
+
+.spark-4 {
+
+  top: 210px;
+  right: 24px;
+
+  background: #ff9fc5;
+}
+
+
+.spark-5 {
+
+  bottom: 85px;
+  left: 60px;
+
+  width: 5px;
+  height: 5px;
+
+  background: #ffd75c;
+}
+
+
+.spark-6 {
+
+  bottom: 75px;
+  right: 62px;
+
+  width: 5px;
+  height: 5px;
+
+  background: #9bd9ff;
+}
+
+
+.letter-page:not(.hide) .letter-spark {
+
+  animation:
+    sparkle
+    2.2s
+    ease-in-out
+    infinite;
+}
+
+
+.spark-1 {
+  animation-delay: .8s !important;
+}
+
+.spark-2 {
+  animation-delay: 1.2s !important;
+}
+
+.spark-3 {
+  animation-delay: 1.5s !important;
+}
+
+.spark-4 {
+  animation-delay: 1s !important;
+}
+
+.spark-5 {
+  animation-delay: 1.8s !important;
+}
+
+.spark-6 {
+  animation-delay: 1.4s !important;
+}
+
+
+/* =========================================================
+   PAGE 2
+========================================================= */
+
+.birthday-page {
+
+  position: relative;
+
+  width: 100%;
+
+  min-height: 100dvh;
+
+  overflow-x: hidden;
+
+  overflow-y: auto;
+
+  background: #084595;
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transition:
+    opacity .8s ease,
+    visibility .8s ease;
+}
+
+
+.birthday-page.show {
+
+  opacity: 1;
+
+  visibility: visible;
+
+  pointer-events: auto;
+}
+
+
+/* =========================================================
+   BIRTHDAY CONTENT
+========================================================= */
+
+.birthday-content {
+
+  position: relative;
+
+  width: 100%;
+
+  min-height: 100dvh;
+
+  padding-top: 1px;
+
+  padding-bottom: 80px;
+}
+
+
+/* =========================================================
+   FIREWORK
+========================================================= */
+
+.firework {
+
+  position: absolute;
+
+  width: 72px;
+
+  height: auto;
+
+  z-index: 2;
+
+  opacity: 0;
+}
+
+
+.firework-left {
+
+  top: 25px;
+
+  left: 15px;
+
+  transform:
+    scale(.4)
+    rotate(-12deg);
+}
+
+
+.firework-right {
+
+  top: 25px;
+
+  right: 15px;
+
+  transform:
+    scale(.4)
+    rotate(12deg);
+}
+
+
+.birthday-page.show .firework-left {
+
+  animation:
+    fireworkIn
+    .8s
+    cubic-bezier(.175,.885,.32,1.275)
+    .1s
+    forwards,
+
+    fireworkFloat
+    3.4s
+    ease-in-out
+    1s
+    infinite;
+}
+
+
+.birthday-page.show .firework-right {
+
+  animation:
+    fireworkIn
+    .8s
+    cubic-bezier(.175,.885,.32,1.275)
+    .25s
+    forwards,
+
+    fireworkFloat
+    3.4s
+    ease-in-out
+    1.2s
+    infinite;
+}
+
+
+/* =========================================================
+   CHARACTER AREA
+
+   ตำแหน่ง:
+   Cake  ←  Heart  →  Gift
+========================================================= */
+
+.character-area {
+
+  position: relative;
+
+  width: 570px;
+
+  height: 325px;
+
+  margin: 85px auto 0;
+
+  z-index: 5;
+}
+
+
+/* =========================================================
+   HEART
+   ใหญ่ที่สุด
+========================================================= */
+
+.heart {
+
+  position: absolute;
+
+  width: 270px;
+
+  height: auto;
+
+  left: 50%;
+
+  bottom: 0;
+
+  transform:
+    translateX(-50%)
+    translateY(55px)
+    scale(.45);
+
+  opacity: 0;
+
+  z-index: 6;
+
+  filter:
+    drop-shadow(
+      0 10px 9px rgba(0,0,0,.20)
+    );
+}
+
+
+.birthday-page.show .heart {
+
+  animation:
+    heartIn
+    1.25s
+    cubic-bezier(.175,.885,.32,1.275)
+    .65s
+    forwards,
+
+    heartFloat
+    3.4s
+    ease-in-out
+    2s
+    infinite;
+}
+
+
+/* =========================================================
+   CAKE
+========================================================= */
+
+.cake {
+
+  position: absolute;
+
+  width: 112px;
+
+  height: auto;
+
+  left: 38px;
+
+  bottom: 62px;
+
+  opacity: 0;
+
+  z-index: 8;
+
+  transform:
+    translateX(-100px)
+    rotate(-12deg)
+    scale(.6);
+}
+
+
+.birthday-page.show .cake {
+
+  animation:
+    cakeIn
+    1.1s
+    cubic-bezier(.175,.885,.32,1.275)
+    .4s
+    forwards,
+
+    cakeFloat
+    3s
+    ease-in-out
+    1.7s
+    infinite;
+}
+
+
+/* =========================================================
+   GIFT
+========================================================= */
+
+.gift {
+
+  position: absolute;
+
+  width: 112px;
+
+  height: auto;
+
+  right: 38px;
+
+  bottom: 62px;
+
+  opacity: 0;
+
+  z-index: 8;
+
+  transform:
+    translateX(100px)
+    rotate(12deg)
+    scale(.6);
+}
+
+
+.birthday-page.show .gift {
+
+  animation:
+    giftIn
+    1.1s
+    cubic-bezier(.175,.885,.32,1.275)
+    .65s
+    forwards,
+
+    giftFloat
+    3.2s
+    ease-in-out
+    1.9s
+    infinite;
+}
+
+
+/* =========================================================
+   MESSAGE AREA
+========================================================= */
+
+.message-area {
+
+  position: relative;
+
+  width: min(
+    760px,
+    calc(100% - 36px)
+  );
+
+  margin: 0 auto;
+
+  text-align: center;
+
+  color: #ffffff;
+
+  z-index: 10;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.message-area h1 {
+
+  margin: 0;
+
+  font-family: "Itim", cursive;
+
+  font-size: 40px;
+
+  font-weight: 400;
+
+  line-height: 1.1;
+
+  opacity: 0;
+
+  transform:
+    translateY(22px)
+    scale(.85);
+}
+
+
+.birthday-page.show .message-area h1 {
+
+  animation:
+    titleIn
+    .9s
+    cubic-bezier(.175,.885,.32,1.275)
+    1s
+    forwards;
+}
+
+
+/* =========================================================
+   THAI TITLE
+========================================================= */
+
+.thai-heading {
+
+  margin-top: 8px;
+
+  font-family: "Itim", cursive;
+
+  font-size: 19px;
+
+  line-height: 1.5;
+
+  opacity: 0;
+}
+
+
+.birthday-page.show .thai-heading {
+
+  animation:
+    fadeUp
+    .8s
+    ease
+    1.25s
+    forwards;
+}
+
+
+/* =========================================================
+   BIRTHDAY MESSAGE
+========================================================= */
+
+.birthday-message {
+
+  width: 100%;
+
+  margin-top: 35px;
+
+  padding: 0 5px;
+
+  text-align: center;
+
+  font-family: "Itim", cursive;
+
+  font-size: 20px;
+
+  line-height: 2;
+
+  color: #ffffff;
+}
+
+
+.birthday-message p {
+
+  margin: 0 0 25px;
+
+  opacity: 0;
+
+  transform:
+    translateY(20px)
+    scale(.98);
+
+  transition:
+    opacity .8s ease,
+    transform .8s ease;
+}
+
+
+.birthday-message p.visible {
+
+  opacity: 1;
+
+  transform:
+    translateY(0)
+    scale(1);
+}
+
+
+.birthday-message .last-message {
+
+  margin-top: 12px;
+
+  margin-bottom: 0;
+
+  font-size: 22px;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes headingIn {
+
+  0% {
+
+    opacity: 0;
+
+    transform:
+      translateY(-18px)
+      scale(.8);
+  }
+
+  65% {
+
+    opacity: 1;
+
+    transform:
+      translateY(4px)
+      scale(1.07);
+  }
+
+  100% {
+
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+
+@keyframes letterIn {
+
+  0% {
+
+    opacity: 0;
+
+    transform:
+      translateY(40px)
+      scale(.6)
+      rotate(-12deg);
+  }
+
+  55% {
+
+    opacity: 1;
+
+    transform:
+      translateY(-12px)
+      scale(1.08)
+      rotate(4deg);
+  }
+
+  75% {
+
+    transform:
+      translateY(4px)
+      scale(.96)
+      rotate(-2deg);
+  }
+
+  100% {
+
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1)
+      rotate(0);
+  }
+}
+
+
+@keyframes letterFloat {
+
+  0%,
+  100% {
+
+    margin-top: 0;
+
+    transform:
+      translateY(0)
+      rotate(0);
+  }
+
+  25% {
+
+    transform:
+      translateY(-7px)
+      rotate(-1.5deg);
+  }
+
+  50% {
+
+    transform:
+      translateY(-13px)
+      rotate(1.5deg);
+  }
+
+  75% {
+
+    transform:
+      translateY(-6px)
+      rotate(-1deg);
+  }
+}
+
+
+@keyframes captionIn {
+
+  from {
+
+    opacity: 0;
+
+    transform:
+      translateY(12px);
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+}
+
+
+@keyframes sparkle {
+
+  0% {
+
+    opacity: 0;
+
+    transform:
+      scale(.2)
+      translateY(5px);
+  }
+
+  30% {
+
+    opacity: 1;
+  }
+
+  55% {
+
+    opacity: .35;
+
+    transform:
+      scale(1.5)
+      translateY(-4px);
+  }
+
+  100% {
+
+    opacity: 0;
+
+    transform:
+      scale(.2)
+      translateY(-10px);
+  }
+}
+
+
+@keyframes letterClick {
+
+  0% {
+
+    transform:
+      scale(1);
+  }
+
+  35% {
+
+    transform:
+      scale(.84)
+      rotate(-5deg);
+  }
+
+  65% {
+
+    transform:
+      scale(1.08)
+      rotate(4deg);
+  }
+
+  100% {
+
+    transform:
+      scale(1)
+      rotate(0);
+  }
+}
+
+
+@keyframes fireworkIn {
+
+  0% {
+
+    opacity: 0;
+
+    transform:
+      scale(.2)
+      rotate(-20deg);
+  }
+
+  65% {
+
+    opacity: 1;
+
+    transform:
+      scale(1.12)
+      rotate(5deg);
+  }
+
+  100% {
+
+    opacity: 1;
+
+    transform:
+      scale(1)
+      rotate(0);
+  }
+}
+
+
+@keyframes fireworkFloat {
+
+  0%,
+  100% {
+
+    margin-top: 0;
+  }
+
+  50% {
+
+    margin-top: -10px;
+  }
+}
+
+
+@keyframes heartIn {
+
+  0% {
+
+    opacity: 0;
+
+    transform:
+      translateX(-50%)
+      translateY(65px)
+      scale(.35);
+  }
+
+  55% {
+
+    opacity: 1;
+
+    transform:
+      translateX(-50%)
+      translateY(-15px)
+      scale(1.08);
+  }
+
+  75% {
+
+    transform:
+      translateX(-50%)
+      translateY(5px)
+      scale(.96);
+  }
+
+  100% {
+
+    opacity: 1;
+
+    transform:
+      translateX(-50%)
+      translateY(0)
+      scale(1);
+  }
+}
+
+
+@keyframes heartFloat {
+
+  0%,
+  100% {
+
+    margin-top: 0;
+  }
+
+  50% {
+
+    margin-top: -12px;
+  }
+}
+
+
+@keyframes cakeIn {
+
+  0% {
+
+    opacity: 0;
+
+    transform:
+      translateX(-100px)
+      translateY(15px)
+      rotate(-15deg)
+      scale(.6);
+  }
+
+  60% {
+
+    opacity: 1;
+
+    transform:
+      translateX(8px)
+      translateY(-6px)
+      rotate(5deg)
+      scale(1.06);
+  }
+
+  80% {
+
+    transform:
+      translateX(-3px)
+      translateY(2px)
+      rotate(-2deg)
+      scale(.98);
+  }
+
+  100% {
+
+    opacity: 1;
+
+    transform:
+      translateX(0)
+      translateY(0)
+      rotate(0)
+      scale(1);
+  }
+}
+
+
+@keyframes cakeFloat {
+
+  0%,
+  100% {
+
+    margin-top: 0;
+  }
+
+  50% {
+
+    margin-top: -9px;
+  }
+}
+
+
+@keyframes giftIn {
+
+  0% {
+
+    opacity: 0;
+
+    transform:
+      translateX(100px)
+      translateY(15px)
+      rotate(15deg)
+      scale(.6);
+  }
+
+  60% {
+
+    opacity: 1;
+
+    transform:
+      translateX(-8px)
+      translateY(-6px)
+      rotate(-5deg)
+      scale(1.06);
+  }
+
+  80% {
+
+    transform:
+      translateX(3px)
+      translateY(2px)
+      rotate(2deg)
+      scale(.98);
+  }
+
+  100% {
+
+    opacity: 1;
+
+    transform:
+      translateX(0)
+      translateY(0)
+      rotate(0)
+      scale(1);
+  }
+}
+
+
+@keyframes giftFloat {
+
+  0%,
+  100% {
+
+    margin-top: 0;
+  }
+
+  50% {
+
+    margin-top: -11px;
+  }
+}
+
+
+@keyframes titleIn {
+
+  0% {
+
+    opacity: 0;
+
+    transform:
+      translateY(25px)
+      scale(.8);
+  }
+
+  65% {
+
+    opacity: 1;
+
+    transform:
+      translateY(-5px)
+      scale(1.06);
+  }
+
+  100% {
+
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+
+@keyframes fadeUp {
+
+  from {
+
+    opacity: 0;
+
+    transform:
+      translateY(12px);
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .letter-container {
+
+    width: 300px;
+
+    height: 390px;
+  }
+
+
+  .letter-heading {
+
+    font-size: 27px;
+  }
+
+
+  .letter-button {
+
+    width: 165px;
+  }
+
+
+  .letter-caption {
+
+    font-size: 18px;
+  }
+
+
+  /* พลุ */
+
+  .firework {
+
+    width: 55px;
+  }
+
+
+  .firework-left {
+
+    top: 15px;
+
+    left: 3px;
+  }
+
+
+  .firework-right {
+
+    top: 15px;
+
+    right: 3px;
+  }
+
+
+  /* รูป */
+
+  .character-area {
+
+    width: 360px;
+
+    height: 260px;
+
+    margin-top: 78px;
+  }
+
+
+  .heart {
+
+    width: 210px;
+
+    bottom: 0;
+  }
+
+
+  .cake {
+
+    width: 88px;
+
+    left: 13px;
+
+    bottom: 50px;
+  }
+
+
+  .gift {
+
+    width: 88px;
+
+    right: 13px;
+
+    bottom: 50px;
+  }
+
+
+  /* ข้อความ */
+
+  .message-area {
+
+    width: calc(100% - 30px);
+  }
+
+
+  .message-area h1 {
+
+    font-size: 31px;
+  }
+
+
+  .thai-heading {
+
+    font-size: 17px;
+  }
+
+
+  .birthday-message {
+
+    margin-top: 30px;
+
+    font-size: 18px;
+
+    line-height: 1.9;
+  }
+
+
+  .birthday-message p {
+
+    margin-bottom: 23px;
+  }
+
+
+  .birthday-message .last-message {
+
+    font-size: 20px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .character-area {
+
+    width: 330px;
+
+    height: 245px;
+
+    margin-top: 70px;
+  }
+
+
+  .heart {
+
+    width: 195px;
+  }
+
+
+  .cake,
+  .gift {
+
+    width: 80px;
+
+    bottom: 48px;
+  }
+
+
+  .cake {
+
+    left: 8px;
+  }
+
+
+  .gift {
+
+    right: 8px;
+  }
+
+
+  .message-area h1 {
+
+    font-size: 28px;
+  }
+
+
+  .birthday-message {
+
+    font-size: 17px;
+
+    line-height: 1.85;
+  }
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media (min-width: 900px) {
+
+  .character-area {
+
+    width: 570px;
+
+    height: 325px;
+
+    margin-top: 90px;
+  }
+
+
+  .heart {
+
+    width: 270px;
+  }
+
+
+  .cake,
+  .gift {
+
+    width: 112px;
+  }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+
+    animation-duration: .01ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    transition-duration: .01ms !important;
+  }
+}
